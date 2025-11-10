@@ -1,0 +1,8 @@
+:root{--red:#d90429;--muted:#6b7280}
+*{box-sizing:border-box}
+body{font-family:system-ui;background:#fff9f7;margin:0}
+.wrap{max-width:1000px;margin:3rem auto;padding:0 1rem;display:grid;gap:1.5rem;grid-template-columns:1fr 1fr}
+.panel{background:#fff;border:1px solid #eee;border-radius:16px;padding:1.25rem;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+a{color:var(--red);text-decoration:none;border-bottom:1px dotted}
+.code pre{background:#0b1020;color:#d2e0ff;padding:1rem;border-radius:12px;white-space:pre-wrap}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
