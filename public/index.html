@@ -1,26 +1,34 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>Burger Tavern API</title>
-  <link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
-  <main class="wrap">
-    <section class="panel">
-      <h1>Burger Tavern API</h1>
-      <ul>
-        <li><a href="/api/menu">GET /api/menu</a></li>
-        <li><a href="/api/items/classic-smash">GET /api/items/:slug</a></li>
-      </ul>
-    </section>
-    <section class="panel code">
-<pre>{
-  "burgers": [...],
-  "sides": [...],
-  "specials": [...]
-}</pre>
-    </section>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Burger Tavern API</title>
+    <style>
+      body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; padding:24px; max-width:780px; margin:auto}
+      code{background:#f4f4f4; padding:2px 6px; border-radius:6px}
+      a{color:#0a58ca; text-decoration:none}
+      a:hover{text-decoration:underline}
+      .cards{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+      .card{border:1px solid #e5e5e5; border-radius:12px; padding:16px}
+      h1{margin-top:0}
+    </style>
+  </head>
+  <body>
+    <h1>Burger Tavern API</h1>
+    <p>Available endpoints:</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>All Menu</h3>
+        <p>GET <code>/api/menu</code></p>
+        <p><a href="/api/menu">Open JSON</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Single Item</h3>
+        <p>GET <code>/api/items/:slug</code></p>
+        <p>Example: <a href="/api/items/classic-smash">/api/items/classic-smash</a></p>
+      </div>
+    </div>
+  </body>
 </html>
