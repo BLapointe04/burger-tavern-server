@@ -1,37 +1,34 @@
-// server.js (ESM version)
-import dotenv from "dotenv";
-dotenv.config();
-
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
+import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
+import "dotenv/config";
 
-// Import routes
+// ROUTES
 import itemsRoute from "./routes/items.js";
 import menuRoute from "./routes/menu.js";
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middleware
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://blapointe04.github.io",
-    "https://burger-tavern-react.onrender.com"
-  ],
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true
-}));
 
 
-// MongoDB connection
+app.use(cors());
+app.use(express.json()); 
+// Serve static public folder (optional)
+app.use(express.static(path.join(__dirname, "public")));
+
+const MONGO_URL = process.env.MONGO_URL;
+
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(MONGO_URL)
   .then(() => console.log("MongoDB Atlas Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-// Routes
+
 app.use("/api/items", itemsRoute);
 app.use("/api/menu", menuRoute);
 
@@ -39,7 +36,5 @@ app.get("/", (req, res) => {
   res.send("Burger Tavern API is running.");
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
