@@ -1,12 +1,11 @@
 import Joi from "joi";
 
-export const itemSchema = Joi.object({
-  name: Joi.string().min(2).max(50).required(),
-  desc: Joi.string().min(5).max(500).required(),
-  price: Joi.number().min(0).required(),
-  category: Joi.string()
-    .valid("burgers", "sides", "specials")
-    .required(),
-  image: Joi.string().uri().allow("", null),
-  slug: Joi.string().min(1).required(),
+const itemSchema = Joi.object({
+  name: Joi.string().min(1).required(),
+  price: Joi.number().precision(2).required(),
+  description: Joi.string().allow(""),
+  imageUrl: Joi.string().uri().required(),
+  category: Joi.string().required()
 });
+
+export default itemSchema;
