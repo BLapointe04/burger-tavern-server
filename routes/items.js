@@ -5,9 +5,7 @@ import { itemSchema } from "../validation/itemValidation.js";
 
 const router = express.Router();
 
-/* ---------------------------------------
-   GET SINGLE ITEM BY SLUG
----------------------------------------- */
+
 router.get("/:slug", async (req, res) => {
   try {
     const item = await Item.findOne({ slug: req.params.slug });
@@ -23,9 +21,7 @@ router.get("/:slug", async (req, res) => {
   }
 });
 
-/* ---------------------------------------
-   ADD NEW ITEM  (POST /api/items)
----------------------------------------- */
+
 router.post("/", async (req, res) => {
   // Validate with Joi
   const { error } = itemSchema.validate(req.body, { abortEarly: false });
@@ -57,9 +53,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-/* ---------------------------------------
-   UPDATE ITEM BY SLUG (PUT /api/items/:slug)
----------------------------------------- */
+
 router.put("/:slug", async (req, res) => {
   // Validate with Joi
   const { error } = itemSchema.validate(req.body, { abortEarly: false });
@@ -94,9 +88,7 @@ router.put("/:slug", async (req, res) => {
   }
 });
 
-/* ---------------------------------------
-   DELETE ITEM (DELETE /api/items/:slug)
----------------------------------------- */
+
 router.delete("/:slug", async (req, res) => {
   try {
     const deleted = await Item.findOneAndDelete({ slug: req.params.slug });
