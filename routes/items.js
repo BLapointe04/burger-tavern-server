@@ -1,9 +1,9 @@
-// routes/items.js  (ESM version)
 import express from "express";
 import Item from "../models/Item.js";
-import { itemSchema } from "../validation/itemValidation.js";
+import itemSchema from "../validation/itemValidation.js";
 
 const router = express.Router();
+
 
 
 router.get("/:slug", async (req, res) => {
